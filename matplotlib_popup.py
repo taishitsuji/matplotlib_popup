@@ -7,7 +7,7 @@ from matplotlib import font_manager
 
 # 日本語フォントと英数字フォントを分けて設定
 prop_japanese = font_manager.FontProperties(fname="C:/Windows/Fonts/MSPGOTHIC.TTC")
-prop_english = font_manager.FontProperties(fname="C:/Windows/Fonts/times.ttf")
+prop_english = font_manager.FontProperties(fname="./fonts/times.ttf")
 
 # グローバル変数
 fig, ax1 = None, None
