@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vi-plot-lib"
+version = "0.1.0"
+description = "CSV graph visualization library"
+authors = [{name = "taishi"}]
+dependencies = [
+    "matplotlib",
+    "pandas"
+]
+[tool.setuptools.packages.find]
+where = ["src"]
