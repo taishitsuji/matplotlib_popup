@@ -1,9 +1,7 @@
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
 
-# フォント設定
-prop_japanese = font_manager.FontProperties(fname="C:/Windows/Fonts/MSPGOTHIC.TTC")
-prop_english = font_manager.FontProperties(fname="./fonts/times.ttf")
+plt.rcParams["font.family"] = "sans-serif"
 
 def create_plot(df, config):
     import matplotlib.pyplot as plt

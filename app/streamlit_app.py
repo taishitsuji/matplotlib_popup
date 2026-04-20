@@ -1,11 +1,6 @@
-import sys
-import os
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
-
 import streamlit as st
 import pandas as pd
-from vi_plot_lib.plot import create_plot
+from vi_plot_lib import create_plot
 
 def open_file():
     file = st.file_uploader("CSVファイルをアップロード", type="csv")
@@ -32,13 +27,29 @@ def open_file():
 
             font_size = st.slider("フォントサイズ", 6, 24, 12)
 
-            # ★ここがライブラリ呼び出し
-            fig = create_plot(
-                df, x_label, y_labels,
-                x_label_custom, y_label_custom,
-                x_min, x_max, y_min, y_max,
-                log_x, log_y, font_size
-            )
+            # 🔥 config設計
+            config = {
+                "x": x_label,
+                "y": y_labels,
+                "label": {
+                    "x": x_label_custom,
+                    "y": y_label_custom
+                },
+                "range": {
+                    "x": [x_min, x_max],
+                    "y": [y_min, y_max]
+                },
+                "scale": {
+                    "x": "log" if log_x else "linear",
+                    "y": "log" if log_y else "linear"
+                },
+                "style": {
+                    "font_size": font_size
+                }
+            }
+
+            # ライブラリ呼び出し
+            fig = create_plot(df, config)
 
             st.pyplot(fig)
 
